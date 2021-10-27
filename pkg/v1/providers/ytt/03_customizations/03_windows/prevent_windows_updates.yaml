@@ -1,7 +1,7 @@
 #@ load("@ytt:overlay", "overlay")
 #@ load("@ytt:data", "data")
 #@ if data.values.IS_WINDOWS_WORKLOAD_CLUSTER:
-#@overlay/match by=overlay.subset({"kind":"KubeadmConfigTemplate"})
+#@overlay/match by=overlay.subset({"kind":"KubeadmConfigTemplate", "metadata":{"name": str(data.values.CLUSTER_NAME) + "-md-0-windows-containerd"}})
 ---
 spec:
   template:
